@@ -1,0 +1,15 @@
+node_modules/**/*
+.expo/*
+npm-debug.*
+*.jks
+*.p12
+*.key
+*.mobileprovision
+.watchmanconfig
+Heroku/
+__tests__/
+android/
+babel.config.js
+package-lock.json
+yarn-error.log
+yarn.lock
