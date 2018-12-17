@@ -1,0 +1,35 @@
+{
+  "name": "my-new-project",
+  "main": "node_modules/expo/AppEntry.js",
+  "private": true,
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "eject": "expo eject",
+    "test": "node ./node_modules/jest/bin/jest.js --watchAll"
+  },
+  "jest": {
+    "preset": "jest-expo"
+  },
+  "dependencies": {
+    "@expo/samples": "2.1.1",
+    "expo": "^31.0.2",
+    "react": "16.5.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
+    "react-native-dropdownalert": "^3.7.1",
+    "react-native-elements": "^1.0.0-beta7",
+    "react-native-fs": "^2.12.1",
+    "react-native-image-pan-zoom": "^2.1.11",
+    "react-native-image-zoom-viewer": "^2.2.23",
+    "react-native-sideswipe": "^1.4.2",
+    "react-navigation": "^2.18.2",
+    "react-redux": "^5.1.1",
+    "redux": "^4.0.1",
+    "rn-fetch-blob": "^0.10.13"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "^5.0.0",
+    "jest-expo": "^31.0.0"
+  }
+}
