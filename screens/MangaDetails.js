@@ -72,6 +72,8 @@ export default class MangaDetails extends React.Component {
       mangaStorageData = JSON.stringify(mangaStorageData);
     };
 
+    console.warn("state 1");
+
     //Sets initial state
     this.setState({
       mangaInfo: mangaInfo,
@@ -153,7 +155,10 @@ export default class MangaDetails extends React.Component {
 
   async _updateMangaStorageData() {
 
-    let mangaStorageData = await AsyncStorage.getItem(`${this.state.selectedSource}@${this.state.mangaUrl}`)
+    let selectedSource = this.props.navigation.state.params.selectedSource;
+    let mangaUrl = this.props.navigation.state.params.mangaUrl;
+    let mangaStorageData = await AsyncStorage.getItem(`${selectedSource}@${mangaUrl}`);
+
     this.setState({ mangaStorageData: JSON.parse(mangaStorageData) });
 
   };
@@ -216,8 +221,10 @@ export default class MangaDetails extends React.Component {
 
     delete mangaStorageData.chapterDownloadList[chapterUrl];
 
-    await AsyncStorage.setItem(`${selectedSource}@${mangaUrl}`, JSON.stringify(mangaStorageData));
+    console.warn(`${selectedSource}@${mangaUrl}`);
 
+    await AsyncStorage.setItem(`${selectedSource}@${mangaUrl}`, JSON.stringify(mangaStorageData));
+    
     this.setState({ mangaStorageData: mangaStorageData, mangaInfo: mangaInfo });
   };
 
@@ -239,6 +246,8 @@ export default class MangaDetails extends React.Component {
       pageList: [],
       pageCount: 1
     };
+
+    console.warn("state 4");
 
     //Set state so the page can show the user that the download is beginning
     this.setState({ mangaStorageData: mangaStorageData });
@@ -309,7 +318,7 @@ export default class MangaDetails extends React.Component {
     }
   };
 
-  _finishedPageDownload(item, uri, i) {
+  async _finishedPageDownload(item, uri, i) {
 
     let mangaStorageData = this.state.mangaStorageData;
 
@@ -329,7 +338,9 @@ export default class MangaDetails extends React.Component {
       let selectedSource = this.state.selectedSource;
       let mangaUrl = this.state.mangaUrl;
 
-      AsyncStorage.setItem(`${selectedSource}@${mangaUrl}`, JSON.stringify(mangaStorageData));
+      console.warn(mangaStorageData);
+
+      await AsyncStorage.setItem(`${selectedSource}@${mangaUrl}`, JSON.stringify(mangaStorageData));
     };
 
     this.setState({ mangaStorageData: mangaStorageData });
@@ -352,10 +363,10 @@ export default class MangaDetails extends React.Component {
       localStored: true,
       loading: false,
       selectedSource: item.selectedSource,
+      mangaUrl: item.mangaUrl,
       mangaInfo: {
         chapterList: chapterList
-      },
-      mangaStorageData: JSON.parse(mangaStorageData)
+      }
     });
   }
 

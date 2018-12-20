@@ -59,10 +59,10 @@ export default class App extends React.Component {
           </ThemeContext.Provider>
 
           <NewsShowcase
-            version={"1.1"}
-            updateTitle={"Performance fix"}
+            version={"1.2"}
+            updateTitle={"Special for my friend"}
             changeList={[
-              'We did some adjustments for performance, the app will now feel smoother.'
+              'We did some minor fixes. You can now correctly delete your downloaded chapters.'
             ]}
           />
 
